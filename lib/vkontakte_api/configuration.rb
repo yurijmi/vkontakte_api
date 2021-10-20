@@ -45,6 +45,9 @@ module VkontakteApi
       responses: false
     }.freeze
 
+    # Latest VK API version
+    DEFAULT_API_VERSION = "5.131"
+
     # A global configuration set via the block.
     # @example
     #   VkontakteApi.configure do |config|
@@ -66,7 +69,7 @@ module VkontakteApi
       @log_requests    = DEFAULT_LOGGER_OPTIONS[:requests]
       @log_errors      = DEFAULT_LOGGER_OPTIONS[:errors]
       @log_responses   = DEFAULT_LOGGER_OPTIONS[:responses]
-      @api_version     = nil
+      @api_version     = DEFAULT_API_VERSION
     end
 
     # When this module is extended, set all configuration options to their default values.
