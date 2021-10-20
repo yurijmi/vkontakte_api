@@ -3,6 +3,10 @@
 module VkontakteApi
   # An exception raised by `VkontakteApi::Result` when given a response with an error.
   class Error < StandardError
+    # API error codes for rate limit errors
+    # @see https://vk.com/dev/errors
+    RATE_LIMIT_ERROR_CODES = [6, 9, 10, 29, 129].freeze
+
     # An error code.
     # @return [Fixnum]
     attr_reader :error_code
@@ -54,6 +58,13 @@ module VkontakteApi
                  end
 
       message
+    end
+
+    # Check if the error is due to rate limiting
+    # TODO: specs for this method
+    # @return [Boolean]
+    def rate_limit_reached?
+      RATE_LIMIT_ERROR_CODES.include?(error_code)
     end
 
     private
