@@ -11,9 +11,8 @@ module VkontakteApi
       # @param [Hash] arguments The arguments to flatten.
       # @return [Hash] Flattened arguments.
       def flatten_arguments(arguments)
-        arguments.inject({}) do |flat_args, (arg_name, arg_value)|
-          flat_args[arg_name] = flatten_argument(arg_value)
-          flat_args
+        arguments.transform_values do |arg_value|
+          flatten_argument(arg_value)
         end
       end
 
