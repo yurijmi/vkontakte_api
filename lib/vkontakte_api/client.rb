@@ -101,6 +101,10 @@ module VkontakteApi
       end
     end
 
+    def respond_to_missing?(_method_name, _include_private)
+      true
+    end
+
     private
 
     def settings

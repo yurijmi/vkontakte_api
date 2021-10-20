@@ -14,6 +14,10 @@ module VkontakteApi
       call_method(args, &block)
     end
 
+    def respond_to_missing?(_method_name, _include_private)
+      true
+    end
+
     class << self
       # An array of all method namespaces.
       #
